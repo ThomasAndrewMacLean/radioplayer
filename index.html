@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; media-src 'self' http://icecast.vrtcdn.be http://quantumcast.vrtcdn.be http://vrt.streamabc.net https://streams.movemedia.eu/centraal"
+    />
+    <meta
+      http-equiv="X-Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; media-src 'self' http://icecast.vrtcdn.be http://vrt.streamabc.net https://streams.movemedia.eu/centraal"
+    />
+    <title>Radio player!</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Radio player!</h1>
+    <p>👋</p>
+    <h2 id="radio1">📻 Radio 1</h2>
+
+    <audio id="audioPlayer" controls>
+      <source src="http://icecast.vrtcdn.be/radio1-high.mp3" type="audio/mp3" />
+    </audio>
+
+    <h2 id="klara">📻 Klara</h2>
+
+    <audio id="audioPlayer" controls>
+      <source src="http://icecast.vrtcdn.be/klara-high.mp3" type="audio/mp3" />
+    </audio>
+
+    <h2 id="centraal">📻 Radio Centraal</h2>
+
+    <audio id="audioPlayer" controls>
+      <source src="https://streams.movemedia.eu/centraal" type="audio/mp3" />
+    </audio>
+
+    <script src="script.js"></script>
+  </body>
+</html>
