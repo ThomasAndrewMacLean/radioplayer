@@ -1,15 +1,35 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const audioElements = document.querySelectorAll('audio');
+let audioContext;
 
-    audioElements.forEach(audio => {
-        audio.addEventListener('play', function() {
-            audioElements.forEach(otherAudio => {
-                if (otherAudio !== audio && !otherAudio.paused) {
-                    otherAudio.pause();
-                }
-            });
+document.addEventListener('DOMContentLoaded', function() {
+    const allbuttons = document.querySelectorAll('button');
+    allbuttons.forEach(button => {
+        button.addEventListener('click', function() {
+            allbuttons.forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+        });
+    });
+    const buttons = document.querySelectorAll('button[data-src]');
+    buttons.forEach(button => {
+        button.addEventListener('click', function() {
+            // Stop any currently playing audio
+            if (audioContext) {
+                audioContext.pause();
+                audioContext.currentTime = 0; // Reset to start
+                audioContext = null;
+            }
+            const src = this.getAttribute('data-src');
+            audioContext = new Audio(src);
+            audioContext.play();
         });
     });
 
 
+    const stopButton = document.getElementById('stop');
+    stopButton.addEventListener('click', function() {
+        if (audioContext) {
+            audioContext.pause();
+            audioContext.currentTime = 0; // Reset to start
+            audioContext = null;
+        }
+    });
 });

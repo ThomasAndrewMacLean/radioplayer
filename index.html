@@ -17,24 +17,18 @@
   <body>
     <h1>Radio player!</h1>
     <p>👋</p>
-    <h2 id="radio1">📻 Radio 1</h2>
+ <div class="button-wrapper">
 
-    <audio id="audioPlayer" controls>
-      <source src="http://icecast.vrtcdn.be/radio1-high.mp3" type="audio/mp3" />
-    </audio>
-
-    <h2 id="klara">📻 Klara</h2>
-
-    <audio id="audioPlayer" controls>
-      <source src="http://icecast.vrtcdn.be/klara-high.mp3" type="audio/mp3" />
-    </audio>
-
-    <h2 id="centraal">📻 Radio Centraal</h2>
-
-    <audio id="audioPlayer" controls>
-      <source src="https://streams.movemedia.eu/centraal" type="audio/mp3" />
-    </audio>
-
+   <button data-src="http://icecast.vrtcdn.be/radio1-high.mp3" type="audio/mp3" >📻 Radio 1</button>
+   
+   
+   <button data-src="http://icecast.vrtcdn.be/klara-high.mp3" type="audio/mp3" >📻 Klara</button>
+   
+   
+   <button data-src="https://streams.movemedia.eu/centraal" type="audio/mp3" >📻 Radio Centraal</button>
+   
+   <button class="active" id="stop">⏹ Stop</button>
+  </div>
     <script src="script.js"></script>
   </body>
 </html>

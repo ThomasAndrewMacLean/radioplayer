@@ -2,3 +2,22 @@ h1{
     color: blue;
     font-size: 24px;
 }
+button{
+    background-color: lightblue;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    aspect-ratio: 2 / 1;
+    cursor: pointer;
+}
+
+button.active{
+    background-color: darkblue;
+    color: white;
+}
+.button-wrapper{
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
