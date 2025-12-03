@@ -1,10 +1,16 @@
 console.log("Hello, World!", process.platform);
-const { app, BrowserWindow , Menu} = require("electron");
+const { app, BrowserWindow, Menu } = require("electron");
+const path = require("path");
 
 const createWindow = () => {
   const win = new BrowserWindow({
     width: 333,
     height: 420,
+    webPreferences: {
+      nodeIntegration: false,
+      contextIsolation: true,
+      preload: path.join(__dirname, "preload.js"),
+    },
   });
 
   win.loadFile("index.html");
@@ -12,19 +18,55 @@ const createWindow = () => {
 
 const dockMenu = Menu.buildFromTemplate([
   {
-    label: 'Pause',
-    click() { 
+    label: "Stop Audio",
+    click() {
       const focusedWindow = BrowserWindow.getFocusedWindow();
       if (focusedWindow) {
-        focusedWindow.webContents.send('pause-audio');
+        focusedWindow.webContents.send("pause-audio");
       }
-     }
+    },
   },
-  
+  {
+    label: "Play Radio 1",
+    click() {
+      const focusedWindow = BrowserWindow.getFocusedWindow();
+      if (focusedWindow) {
+        focusedWindow.webContents.send("radio-1-audio");
+      }
+    },
+  },
+  {
+    label: "Play Klara",
+    click() {
+      const focusedWindow = BrowserWindow.getFocusedWindow();
+      if (focusedWindow) {
+        focusedWindow.webContents.send("klara-audio");
+      }
+    },
+  },
+  {
+    label: "Play Radio Centraal",
+    click() {
+      const focusedWindow = BrowserWindow.getFocusedWindow();
+      if (focusedWindow) {
+        focusedWindow.webContents.send("radio-centraal-audio");
+      }
+    },
+  },
+  ,
+  {
+    label: "Play Willy",
+    click() {
+      const focusedWindow = BrowserWindow.getFocusedWindow();
+      if (focusedWindow) {
+        focusedWindow.webContents.send("willy-audio");
+      }
+    },
+  },
 ]);
 
 app.whenReady().then(() => {
-  if (process.platform === 'darwin') {
+  if (process.platform === "darwin") {
     app.dock.setMenu(dockMenu);
   }
   createWindow();

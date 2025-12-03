@@ -1,5 +1,51 @@
 let audioContext;
 let currentVolume = 0.5; // Default volume (50%)
+let isPaused = false;
+
+// Listen for IPC messages from main process
+if (window.electronAPI) {
+  window.electronAPI.onPauseAudio(() => {
+    togglePlayPause();
+  });
+
+  window.electronAPI.onRadio1Audio(() => {
+    playStation("radio1");
+  });
+
+  window.electronAPI.onKlaraAudio(() => {
+    playStation("klara");
+  });
+
+  window.electronAPI.onRadioCentraalAudio(() => {
+    playStation("radioCentraal");
+  });
+
+  window.electronAPI.onWillyAudio(() => {
+    playStation("willy");
+  });
+}
+
+
+// Function to play a specific station
+function playStation(station) {
+  // click the correct button
+  const button = document.querySelector(`button[data-station="${station}"]`);
+  if (button) {
+    button.click();
+  }
+}
+// Function to toggle play/pause
+function togglePlayPause() {
+  if (audioContext) {
+    if (isPaused || audioContext.paused) {
+      audioContext.play();
+      isPaused = false;
+    } else {
+      audioContext.pause();
+      isPaused = true;
+    }
+  }
+}
 
 document.addEventListener("DOMContentLoaded", function () {
   const allbuttons = document.querySelectorAll("button");

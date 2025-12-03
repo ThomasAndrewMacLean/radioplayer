@@ -19,6 +19,7 @@
     <p>👋</p>
     <div class="button-wrapper">
       <button
+        data-station="radio1"
         data-src="http://icecast.vrtcdn.be/radio1-high.mp3"
         type="audio/mp3"
       >
@@ -26,30 +27,28 @@
       </button>
 
       <button
+        data-station="klara"
         data-src="http://icecast.vrtcdn.be/klara-high.mp3"
         type="audio/mp3"
       >
         📻 Klara
       </button>
 
-      <button data-src="https://streams.movemedia.eu/centraal" type="audio/mp3">
+      <button 
+        data-station="radioCentraal"
+        data-src="https://streams.movemedia.eu/centraal" type="audio/mp3">
         📻 Radio Centraal
       </button>
 
       <button
+        data-station="willy"
         data-src="https://icecast-qmusicbe-cdp.triple-it.nl/willy.mp3"
         type="audio/mp3"
       >
         📻 Radio Willy
       </button>
 
-      <button
-        class="active stopbutton"
-        id="stop"
-        
-      >
-        ⏹ Stop
-      </button>
+      <button class="active stopbutton" id="stop">⏹ Stop</button>
     </div>
 
     <div class="volume-container">
