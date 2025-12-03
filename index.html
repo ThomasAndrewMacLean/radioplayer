@@ -5,11 +5,11 @@
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
     <meta
       http-equiv="Content-Security-Policy"
-      content="default-src 'self'; script-src 'self'; media-src 'self' http://icecast.vrtcdn.be http://quantumcast.vrtcdn.be http://vrt.streamabc.net https://streams.movemedia.eu/centraal"
+      content="default-src 'self'; script-src 'self'; media-src 'self' http://icecast.vrtcdn.be http://quantumcast.vrtcdn.be http://vrt.streamabc.net https://streams.movemedia.eu/centraal https://streams.radio.dpgmedia.cloud https://origin.streamnerd.nl https://icecast-qmusicbe-cdp.triple-it.nl"
     />
     <meta
       http-equiv="X-Content-Security-Policy"
-      content="default-src 'self'; script-src 'self'; media-src 'self' http://icecast.vrtcdn.be http://vrt.streamabc.net https://streams.movemedia.eu/centraal"
+      content="default-src 'self'; script-src 'self'; media-src 'self' http://icecast.vrtcdn.be http://vrt.streamabc.net https://streams.movemedia.eu/centraal https://streams.radio.dpgmedia.cloud https://origin.streamnerd.nl https://icecast-qmusicbe-cdp.triple-it.nl"
     />
     <title>Radio player!</title>
     <link rel="stylesheet" href="style.css" />
@@ -17,18 +17,54 @@
   <body>
     <h1>Radio player!</h1>
     <p>👋</p>
- <div class="button-wrapper">
+    <div class="button-wrapper">
+      <button
+        data-src="http://icecast.vrtcdn.be/radio1-high.mp3"
+        type="audio/mp3"
+      >
+        📻 Radio 1
+      </button>
 
-   <button data-src="http://icecast.vrtcdn.be/radio1-high.mp3" type="audio/mp3" >📻 Radio 1</button>
-   
-   
-   <button data-src="http://icecast.vrtcdn.be/klara-high.mp3" type="audio/mp3" >📻 Klara</button>
-   
-   
-   <button data-src="https://streams.movemedia.eu/centraal" type="audio/mp3" >📻 Radio Centraal</button>
-   
-   <button class="active" id="stop">⏹ Stop</button>
-  </div>
+      <button
+        data-src="http://icecast.vrtcdn.be/klara-high.mp3"
+        type="audio/mp3"
+      >
+        📻 Klara
+      </button>
+
+      <button data-src="https://streams.movemedia.eu/centraal" type="audio/mp3">
+        📻 Radio Centraal
+      </button>
+
+      <button
+        data-src="https://icecast-qmusicbe-cdp.triple-it.nl/willy.mp3"
+        type="audio/mp3"
+      >
+        📻 Radio Willy
+      </button>
+
+      <button
+        class="active stopbutton"
+        id="stop"
+        
+      >
+        ⏹ Stop
+      </button>
+    </div>
+
+    <div class="volume-container">
+      <label for="volume-slider">🔊 Volume</label>
+      <input
+        type="range"
+        id="volume-slider"
+        min="0"
+        max="100"
+        value="50"
+        class="volume-slider"
+      />
+      <span id="volume-display">50%</span>
+    </div>
+
     <script src="script.js"></script>
   </body>
 </html>
